@@ -16,22 +16,23 @@
                 </fieldset>
                 <button class="sort-list-btn">Name</button>
             </form>
-            <!-- {{> contactsList}} -->
-            {{> yield}}
+            {{> contactsList}}
             <div class="add-new">
-                <button class="ui-button button-primary fl">
+                <a href="{{pathFor 'createContact'}}" class="ui-button button-primary fl">
                     <span class="icon-plus"></span>
                     <span class="button-text">New Contact</span>
-                </button>
-                <button class="ui-button button-primary fr">
+                </a>
+                <a href="{{pathFor 'createGroup'}}" class="ui-button button-primary fr">
                     <span class="icon-plus"></span>
                     <span class="button-text">New Group</span>
-                </button>
+                </a>
             </div>
         </aside>
         <section class="main-content">
             <h1 class="hide-text">Address book</h1>
-            <div class="person-data">
+            {{> loginButtons}}
+            {{> yield}}
+            <!-- <div class="person-data">
                 <div class="person-data-controls">
                     <button class="ui-button button-primary">
                         <span class="icon icon-pencil"></span>
@@ -65,7 +66,7 @@
                         </p>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </section>
     </div>
 
@@ -79,7 +80,7 @@
         // ga('create','UA-XXXXX-X');ga('send','pageview');
     </script>
 
-    <script src="scripts/vendor.js"></script>
+    <script src="/scripts/vendor.js"></script>
 
-    <script src="scripts/build.js"></script>
+    <script src="/scripts/build.js"></script>
 </template>
