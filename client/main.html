@@ -1,0 +1,91 @@
+<head>
+    <meta charset="utf-8">
+    <title>CB_front</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+</head>
+<body>
+    <!--[if lt IE 10]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <div class="layout">
+        <aside class="sidebar">
+            <form class="search-box" action="#">
+                <fieldset>
+                    <input type="search" name="search-box" id="main-search" placeholder="Type to search...">
+                    <select name="chose-group" id="group">
+                        <option value="all" selected>All contacts</option>
+                        <option value="home">Home</option>
+                        <option value="wokr">Work</option>
+                    </select>
+                </fieldset>
+                <button class="sort-list-btn">Name</button>
+            </form>
+            {{> contactsList}}
+            <div class="add-new">
+                <button class="ui-button button-primary fl">
+                    <span class="icon-plus"></span>
+                    <span class="button-text">New Contact</span>
+                </button>
+                <button class="ui-button button-primary fr">
+                    <span class="icon-plus"></span>
+                    <span class="button-text">New Group</span>
+                </button>
+            </div>
+        </aside>
+        <section class="main-content">
+            <h1 class="hide-text">Address book</h1>
+            <div class="person-data">
+                <div class="person-data-controls">
+                    <button class="ui-button button-primary">
+                        <span class="icon icon-pencil"></span>
+                        <span class="button-text">Edit</span>
+                    </button>
+                    <button class="ui-button button-secondary">
+                        <span class="icon-remove"></span>
+                        <span class="buton-text">Delete</span>
+                    </button>
+                </div>
+                <div class="person-data-inner">
+                    <div class="person-item-photo">
+                        <img src="images/image-holder.jpg" alt="">
+                    </div>
+                    <div class="person-item-data">
+                        <h2 class="person-fname">
+                            <span class="icon-users"></span>
+                            Andy Hoffman
+                        </h2>
+                        <p class="adress-block" title="Group">
+                            <span class="icon-tags"></span>
+                            <span class="text">Home</span>
+                        </p>
+                        <p class="adress-block" title="Phone">
+                            <span class="icon-mobile"></span>
+                            <span class="text">8-097-598-56-65</span>
+                        </p>
+                        <p class="adress-block" title="E-mail">
+                            <span class="icon-earth"></span>
+                            <a href="mailto:lol@lol.com">mail@mail.com</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+        // (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+        // function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+        // e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+        // e.src='//www.google-analytics.com/analytics.js';
+        // r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+        // ga('create','UA-XXXXX-X');ga('send','pageview');
+    </script>
+
+    <script src="scripts/vendor.js"></script>
+
+    <script src="scripts/main.js"></script>
+</body>
