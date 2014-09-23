@@ -9,11 +9,7 @@
                 <form class="search-box" action="#">
                     <fieldset>
                         <input type="search" name="search-box" id="main-search" placeholder="Type to search...">
-                        <select name="chose-group" id="group">
-                            <option value="all" selected>All contacts</option>
-                            <option value="home">Home</option>
-                            <option value="wokr">Work</option>
-                        </select>
+                        {{> groupsList}}
                     </fieldset>
                     <button class="sort-list-btn">Name</button>
                 </form>
@@ -33,41 +29,6 @@
         <section class="main-content">
             <h1 class="hide-text">Address book</h1>
             {{> yield}}
-            <!-- <div class="person-data">
-                <div class="person-data-controls">
-                    <button class="ui-button button-primary">
-                        <span class="icon icon-pencil"></span>
-                        <span class="button-text">Edit</span>
-                    </button>
-                    <button class="ui-button button-secondary">
-                        <span class="icon-remove"></span>
-                        <span class="buton-text">Delete</span>
-                    </button>
-                </div>
-                <div class="person-data-inner">
-                    <div class="person-item-photo">
-                        <img src="images/image-holder.jpg" alt="">
-                    </div>
-                    <div class="person-item-data">
-                        <h2 class="person-fname">
-                            <span class="icon-users"></span>
-                            Andy Hoffman
-                        </h2>
-                        <p class="adress-block" title="Group">
-                            <span class="icon-tags"></span>
-                            <span class="text">Home</span>
-                        </p>
-                        <p class="adress-block" title="Phone">
-                            <span class="icon-mobile"></span>
-                            <span class="text">8-097-598-56-65</span>
-                        </p>
-                        <p class="adress-block" title="E-mail">
-                            <span class="icon-earth"></span>
-                            <a href="mailto:lol@lol.com">mail@mail.com</a>
-                        </p>
-                    </div>
-                </div>
-            </div> -->
         </section>
     </div>
 

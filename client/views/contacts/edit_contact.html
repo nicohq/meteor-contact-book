@@ -1,0 +1,27 @@
+<template name="editContact">
+    <form action="#" class="create-contact">
+        <fieldset>
+            <legend>Update fields</legend>
+            <label for="f-name">First Name</label>
+            <input type="text" name="first-name" id="f-name" placeholder="John" value="{{firstName}}">
+            <label for="l-name">Last Name</label>
+            <input type="text" name="last-name" id="l-name" placeholder="Snakes" value="{{lastName}}">
+            <label for="u-email">E-mail</label>
+            <input type="email" name="user-email" id="u-email" placeholder="john@snakes.com" value="{{email}}">
+            <label for="u-phone">Phone</label>
+            <input type="tel" name="user-tel" id="u-phone" placeholder="457-58-59" value="{{phone}}">
+            <label for="select-group">Chose a group</label>
+            <select name="group-list" id="select-group">
+                {{#each groups}}
+                    <option value="{{this._id}}" {{isSelected}}>{{group}}</option>
+                {{/each}}
+            </select>
+        </fieldset>
+        <p>
+            <button class="ui-button button-primary" type="submit">
+                <span class="icon-plus"></span>
+                <span class="button-text">Update</span>
+            </button>
+        </p>
+    </form>
+</template>

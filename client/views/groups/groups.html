@@ -1,0 +1,7 @@
+<template name="groupsList">
+    <select name="chose-group" id="group">
+        {{#each groups}}
+            <option value="{{this._id}}" {{isSelected}}>{{group}}</option>
+        {{/each}}
+    </select>
+</template>

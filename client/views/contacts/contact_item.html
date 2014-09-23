@@ -1,13 +1,13 @@
 <template name="contactItem">
     <li class="contact-block">
-        <a href="{{pathFor 'contactPage'}}" class="contact-item">
+        <a href="{{pathFor 'contactPage'}}" class="contact-item {{isActive}}">
             <span class="image"><img src="{{gavatar}}" alt=""></span>
             <span class="fullname">{{fullname}}</span>
         </a>
         <div class="contact-item-controls">
-            <button class="ui-button contact-control-edit" title="Edit Contact">
+            <a href="{{pathFor 'editContact'}}" class="ui-button contact-control-edit" title="Edit Contact">
                 <span class="icon-pencil"></span>
-            </button>
+            </a>
             <button class="ui-button contact-control-delete" title="Delete Contact">
                 <span class="icon-remove"></span>
             </button>

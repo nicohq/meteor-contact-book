@@ -1,7 +1,7 @@
 // Contacts subscribe
 // Meteor.subscribe('contacts'); ==> Move in lib/router.js
 
-
+Meteor.subscribe('groups'); //--> Move in /groups/groups.js
 
 // Auth settings
 //
@@ -14,4 +14,14 @@ Meteor.startup(function() {
         emailToLower: true,
         passwordSignupFields: 'EMAIL_ONLY'
     });
+});
+
+
+// Register global template helpers
+UI.registerHelper('groups', function(){
+    return Groups.find();
+});
+
+UI.registerHelper('fullname', function(){
+    return util.capitalizeAll(this.firstName, this.lastName);
 });
