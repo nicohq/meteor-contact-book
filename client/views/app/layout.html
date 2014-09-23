@@ -5,32 +5,33 @@
 
     <div class="layout">
         <aside class="sidebar">
-            <form class="search-box" action="#">
-                <fieldset>
-                    <input type="search" name="search-box" id="main-search" placeholder="Type to search...">
-                    <select name="chose-group" id="group">
-                        <option value="all" selected>All contacts</option>
-                        <option value="home">Home</option>
-                        <option value="wokr">Work</option>
-                    </select>
-                </fieldset>
-                <button class="sort-list-btn">Name</button>
-            </form>
-            {{> contactsList}}
-            <div class="add-new">
-                <a href="{{pathFor 'createContact'}}" class="ui-button button-primary fl">
-                    <span class="icon-plus"></span>
-                    <span class="button-text">New Contact</span>
-                </a>
-                <a href="{{pathFor 'createGroup'}}" class="ui-button button-primary fr">
-                    <span class="icon-plus"></span>
-                    <span class="button-text">New Group</span>
-                </a>
-            </div>
+            {{# if currentUser}}
+                <form class="search-box" action="#">
+                    <fieldset>
+                        <input type="search" name="search-box" id="main-search" placeholder="Type to search...">
+                        <select name="chose-group" id="group">
+                            <option value="all" selected>All contacts</option>
+                            <option value="home">Home</option>
+                            <option value="wokr">Work</option>
+                        </select>
+                    </fieldset>
+                    <button class="sort-list-btn">Name</button>
+                </form>
+                {{> contactsList}}
+                <div class="add-new">
+                    <a href="{{pathFor 'createContact'}}" class="ui-button button-primary fl">
+                        <span class="icon-plus"></span>
+                        <span class="button-text">New Contact</span>
+                    </a>
+                    <a href="{{pathFor 'createGroup'}}" class="ui-button button-primary fr">
+                        <span class="icon-plus"></span>
+                        <span class="button-text">New Group</span>
+                    </a>
+                </div>
+            {{/ if}}
         </aside>
         <section class="main-content">
             <h1 class="hide-text">Address book</h1>
-            {{> loginButtons}}
             {{> yield}}
             <!-- <div class="person-data">
                 <div class="person-data-controls">
@@ -79,8 +80,6 @@
         // r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
         // ga('create','UA-XXXXX-X');ga('send','pageview');
     </script>
-
     <script src="/scripts/vendor.js"></script>
-
     <script src="/scripts/build.js"></script>
 </template>
