@@ -1,13 +1,16 @@
 Template.contactItem.helpers({
-    domain: function() {
-        var a = document.createElement('a');
-        a.href = this.url;
-        return a.hostname;
+    fullname: function() {
+        return this.firstName + ' ' + this.lastName;
     },
     gavatar: function() {
-        // var email = 'nico_t@ukr.net';
-        // var md5 = CryptoJS.MD5(email);
-        // return 'https://www.gravatar.com/avatar/' + md5;
-        return util.getGavatar('nico_t@ukr.net', 30);
+        console.log(util.getGavatar(this.email, 30) + ' ' + this.lastName);
+        return util.getGavatar(this.email, 30);
+    }
+});
+
+Template.contactItem.events({
+    'click .contact-control-delete': function(e) {
+        e.preventDefault();
+        Contacts.remove(this._id);
     }
 });

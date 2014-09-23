@@ -1,16 +1,19 @@
 if (Contacts.find().count() === 0) {
     Contacts.insert({
-        fullname: 'Sacha Greif',
-        url: 'http://sachagreif.com/introducing-telescope/'
+        firstName: 'Sacha',
+        lastName: ' Greif',
+        email: 'test@gmail.com'
     });
 
     Contacts.insert({
-        fullname: 'Tom Coleman',
-        url: 'http://meteor.com'
+        firstName: 'Tim',
+        lastName: ' Snakes',
+        email: 'smakes@gmail.com'
     });
 
     Contacts.insert({
-        fullname: 'Tom Coleman',
-        url: 'http://themeteorbook.com'
+        firstName: 'Nico',
+        lastName: ' Trygub',
+        email: 'bestnico@gmail.com'
     });
 }
