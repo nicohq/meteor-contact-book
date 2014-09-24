@@ -10,8 +10,10 @@ Template.contactItem.helpers({
 
 Template.contactItem.events({
     'click .contact-control-delete': function(e) {
-        e.preventDefault();
-        Contacts.remove(this._id);
-        Router.go('/');
+        if (confirm("Delete this Contact?")) {
+            e.preventDefault();
+            Contacts.remove(this._id);
+            Router.go('/');
+        }
     }
 });

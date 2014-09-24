@@ -13,6 +13,7 @@ Meteor.methods({
     newContact: function(contactAttr) {
         var user = Meteor.user(),
             postWithSameEmail = Contacts.findOne({
+                owner: user._id,
                 email: contactAttr.email
             });
 
@@ -33,7 +34,7 @@ Meteor.methods({
 
         // Prepare contacts fields
         var contact = _.extend(_.pick(contactAttr, 'firstName', 'lastName', 'email', 'phone', 'groupID'), {
-            userId: user._id,
+            owner: user._id,
             submitted: new Date().getTime()
         });
 

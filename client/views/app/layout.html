@@ -4,6 +4,11 @@
     <![endif]-->
 
     <div class="layout">
+        {{# if currentUser}}
+            <a href="/sign-out" class="ui-button button-secondary _access-btn">SignOut</a>
+        {{else}}
+            <a href="/sign-in" class="ui-button button-primary _access-btn">SignIn</a>
+        {{/ if}}
         <aside class="sidebar">
             {{# if currentUser}}
                 <form class="search-box" action="#">

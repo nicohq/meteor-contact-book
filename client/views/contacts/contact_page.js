@@ -4,15 +4,17 @@ Template.contactPage.helpers({
     },
     group: function() {
         var group = Groups.findOne(this.groupID);
-        return group ? group.group : 'Not selected';
+        return group.group;
     }
 });
 
 
 Template.contactPage.events({
     'click [data-remove="contact"]': function(e) {
-        e.preventDefault();
-        Contacts.remove(this._id);
-        Router.go('/');
+        if (confirm("Delete this Contact?")) {
+            e.preventDefault();
+            Contacts.remove(this._id);
+            Router.go('/');
+        }
     }
 });

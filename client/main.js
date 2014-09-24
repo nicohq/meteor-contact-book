@@ -1,15 +1,21 @@
 // Contacts subscribe
 // Meteor.subscribe('contacts'); ==> Move in lib/router.js
 
-Meteor.subscribe('groups'); //--> Move in /groups/groups.js
+ //--> Move in /groups/groups.js
 
+Session.set('group_id', null);
+Session.set('selected_contact', null);
+
+Tracker.autorun(function (){
+    Meteor.subscribe('groups', Meteor.userId());
+});
 // Auth settings
 //
 
 Meteor.startup(function() {
     AccountsEntry.config({
         wrapLinks: true, // wrap links in li tag
-        homeRoute: '/sign-in', // MUST BE SET - redirect to this path after sign-out
+        homeRoute: '/', // MUST BE SET - redirect to this path after sign-out
         dashboardRoute: '/', // MUST BE SET - redirect to this path after sign-in
         emailToLower: true,
         passwordSignupFields: 'EMAIL_ONLY'
@@ -19,7 +25,9 @@ Meteor.startup(function() {
 
 // Register global template helpers
 UI.registerHelper('groups', function(){
-    return Groups.find();
+    return Groups.find({
+        userId: Meteor.userId()
+    });
 });
 
 UI.registerHelper('fullname', function(){
