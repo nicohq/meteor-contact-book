@@ -16,22 +16,22 @@ Meteor.methods({
                 email: contactAttr.email
             });
 
-        // Удостоверимся что пользователь залогинен
+        // If user loged
         if (!user)
             throw new Meteor.Error(401, "You need to login to post new stories");
 
-        // Проверим что у поста есть заголовок
+        // Check first && last name !== ''
         if (!contactAttr.firstName && !contactAttr.lastName)
             throw new Meteor.Error(422, 'Please fill in a name');
 
-        // Проверим что нет других постов с таким же линком
+        // Check if we have a contact with the same email
         if (contactAttr.email && postWithSameEmail) {
             throw new Meteor.Error(302,
                 'This email has already been posted',
                 postWithSameEmail._id);
         }
 
-        // Выберем поля разрешенные для публикации
+        // Prepare contacts fields
         var contact = _.extend(_.pick(contactAttr, 'firstName', 'lastName', 'email', 'phone', 'groupID'), {
             userId: user._id,
             submitted: new Date().getTime()
@@ -47,15 +47,15 @@ Meteor.methods({
 
         if(contactAttr.email === '') return new Meteor.Error(422, 'Please fill the email');
 
-        // Losed state = loged
+        // If user loged
         if (!user)
             throw new Meteor.Error(401, "You need to login to post new stories");
 
-        // Проверим что у поста есть заголовок
+        // Check first && last name !== ''
         if (!contactAttr.firstName && !contactAttr.lastName)
             throw new Meteor.Error(422, 'Please fill in a name');
 
-        // Выберем поля разрешенные для публикации
+        // Prepare contacts fields
         var contact = _.pick(contactAttr, 'firstName', 'lastName', 'email', 'phone', 'groupID');
 
         var contactID = contactAttr.ID;

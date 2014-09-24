@@ -21,11 +21,12 @@ if (Contacts.find().count() === 0) {
     });
 }
 
-console.log(' server');
-
-// if(Groups.find().count() === 0) {
-//     Groups.insert({
-//         group: 'All contacts',
-//         userId: _userID
-//     });
-// }
+Accounts.onCreateUser(function(options, user) {
+    Groups.insert({
+        userId: user._id,
+        group: 'All contacts',
+        created: new Date().getTime()
+    });
+    if (options.profile) user.profile = options.profile;
+    return user;
+});
