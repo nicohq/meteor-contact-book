@@ -2,7 +2,7 @@
     <!--[if lt IE 10]>
         <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-
+    {{> errors}}
     <div class="layout">
         {{# if currentUser}}
             <a href="/sign-out" class="ui-button button-secondary _access-btn">SignOut</a>
@@ -13,7 +13,7 @@
             {{# if currentUser}}
                 <form class="search-box" action="#">
                     <fieldset>
-                        <input type="search" name="search-box" id="main-search" placeholder="Type to search...">
+                        {{> search}}
                         {{> groupsList}}
                     </fieldset>
                     <button class="sort-list-btn">Name</button>

@@ -3,8 +3,8 @@ Template.createContact.events({
         e.preventDefault();
 
         var contact = {
-            firstName: util.pretifyStr($(e.target).find('[name=first-name]').val()),
-            lastName: util.pretifyStr($(e.target).find('[name=last-name]').val()),
+            firstName: util.clearStr($(e.target).find('[name=first-name]').val()),
+            lastName: util.clearStr($(e.target).find('[name=last-name]').val()),
             email: $(e.target).find('[name=user-email]').val(),
             phone: $(e.target).find('[name=user-tel]').val(),
             groupID: $(e.target).find('[name="group-list"]').val()
@@ -13,7 +13,7 @@ Template.createContact.events({
         // str Trim + validation
 
         Meteor.call('newContact', contact, function(error, id) {
-            if (error) return console.log(error);
+            if (error) return newError(error);
 
             Router.go('contactPage', {_id: id});
         });

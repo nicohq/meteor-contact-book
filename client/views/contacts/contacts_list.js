@@ -1,12 +1,20 @@
 Template.contactsList.helpers({
     contacts: function() {
-        var groupID = Session.get('group_id');
-        //if (!groupID) return {}; // return none
-        if (!groupID) return Contacts.find(); // return none
+        // Search query
+        var query = Session.get('search_query'),
+            queryRegExp = new RegExp(query, 'i');
+        if(query) {
+            return Contacts.find({
+                $or: [{'firstName': query},
+                      {'lastName': query}]
+            });
+        }
 
-        // All contact
-        var meteorGroup = Groups.findOne(groupID);
-        if (meteorGroup.showAll) return Contacts.find(); //Pub all contacts
+        // Group filter (select)
+        var groupID = Session.get('group_id'),
+            meteorGroup = Groups.findOne(groupID);
+        if (!groupID ||
+             meteorGroup.showAll) return Contacts.find(); // return all contacts
 
         return Contacts.find({
             groupID: groupID

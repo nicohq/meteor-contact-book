@@ -3,8 +3,12 @@
 
  //--> Move in /groups/groups.js
 
+
+// Clear session
 Session.set('group_id', null);
 Session.set('selected_contact', null);
+Session.set('search_query', null);
+Session.set('active_error', null); //Just for animate errors overlay
 
 Tracker.autorun(function (){
     Meteor.subscribe('groups', Meteor.userId());

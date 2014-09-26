@@ -32,6 +32,12 @@ Meteor.methods({
                 postWithSameEmail._id);
         }
 
+        // Check contact email
+        if(!util.validateEmail(contactAttr.email)) throw new Meteor.Error(401, "Invalid email");
+
+        // Check contact tel
+        if(!util.validateTel(contactAttr.phone)) throw new Meteor.Error(401, 'Invalid phone');
+
         // Prepare contacts fields
         var contact = _.extend(_.pick(contactAttr, 'firstName', 'lastName', 'email', 'phone', 'groupID'), {
             owner: user._id,
@@ -46,15 +52,17 @@ Meteor.methods({
     editContact: function(contactAttr) {
         var user = Meteor.user();
 
-        if(contactAttr.email === '') return new Meteor.Error(422, 'Please fill the email');
+        // Check contact email
+        if(!util.validateEmail(contactAttr.email)) throw new Meteor.Error(401, "Invalid email");
+
+        // Check contact tel
+        if(!util.validateTel(contactAttr.phone)) throw new Meteor.Error(401, 'Invalid phone');
 
         // If user loged
-        if (!user)
-            throw new Meteor.Error(401, "You need to login to post new stories");
+        if (!user) throw new Meteor.Error(401, "You need to login to post new stories");
 
         // Check first && last name !== ''
-        if (!contactAttr.firstName && !contactAttr.lastName)
-            throw new Meteor.Error(422, 'Please fill in a name');
+        if (!contactAttr.firstName && !contactAttr.lastName) throw new Meteor.Error(422, 'Please fill in a name');
 
         // Prepare contacts fields
         var contact = _.pick(contactAttr, 'firstName', 'lastName', 'email', 'phone', 'groupID');

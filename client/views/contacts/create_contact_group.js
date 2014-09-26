@@ -9,7 +9,7 @@ Template.createGroup.events({
         }
 
         Meteor.call('createGroup', group, function(error, id) {
-            if (error) return console.log(error);
+            if (error) return newError(error);
 
             Router.go('/');
         });

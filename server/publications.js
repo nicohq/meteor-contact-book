@@ -3,8 +3,8 @@ Meteor.publish('contacts', function(loggedUserID) {
     if(Contacts.find({owner: loggedUserID}).count() === 0) {
         //Insert default test contact
         Contacts.insert({
-            firstName: 'Delete',
-            lastName: 'Me',
+            firstName: 'delete',
+            lastName: 'me',
             email: 'test@test.com',
             phone: '111-11-11',
             owner: loggedUserID,
