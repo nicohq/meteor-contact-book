@@ -8,6 +8,7 @@ Template.createGroup.events({
             group: groupName
         }
 
+        // Create group ==> /collections/groups.js
         Meteor.call('createGroup', group, function(error, id) {
             if (error) return newError(error);
 

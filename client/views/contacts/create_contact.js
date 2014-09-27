@@ -10,8 +10,7 @@ Template.createContact.events({
             groupID: $(e.target).find('[name="group-list"]').val()
         }
 
-        // str Trim + validation
-
+        // Create contact ==> /collections/contacts.js
         Meteor.call('newContact', contact, function(error, id) {
             if (error) return newError(error);
 
