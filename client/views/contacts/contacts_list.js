@@ -1,12 +1,11 @@
 Template.contactsList.helpers({
     contacts: function() {
         // Search query
-        var query = Session.get('search_query'),
-            queryRegExp = new RegExp(query, 'i');
+        var query = Session.get('search_query');
         if(query) {
             return Contacts.find({
-                $or: [{'firstName': query},
-                      {'lastName': query}]
+                $or: [{'firstName': { $regex: query, $options: 'i' }},
+                      {'lastName': { $regex: query, $options: 'i' }}]
             });
         }
 

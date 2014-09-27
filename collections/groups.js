@@ -1,7 +1,7 @@
 Groups = new Meteor.Collection('groups');
 
 Groups.allow({
-    insert: function(userID) {
+    insert: function(userId) {
         return !!userId;
     }
 });
@@ -13,11 +13,15 @@ Meteor.methods({
                 group: group
             });
 
+        //If group exist
         if(group === groupWithTheSameName) {
-            new Meteor.Error(302,
+            throw new Meteor.Error(302,
                 'Error, find the group with the same name',
                 groupWithTheSameName._id);
         }
+
+        // If empty string
+        if(group.group == '') throw new Meteor.Error(422, 'Please fill in a group name');
 
         var newGroup = _.extend(_.pick(group, 'group'), {
             userId: user._id,

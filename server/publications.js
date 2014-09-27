@@ -1,17 +1,5 @@
 // Pub short contacts
 Meteor.publish('contacts', function(loggedUserID) {
-    if(Contacts.find({owner: loggedUserID}).count() === 0) {
-        //Insert default test contact
-        Contacts.insert({
-            firstName: 'delete',
-            lastName: 'me',
-            email: 'test@test.com',
-            phone: '111-11-11',
-            owner: loggedUserID,
-            group: Groups.findOne()._id
-        });
-    }
-
     return Contacts.find({
         owner: loggedUserID
     });
